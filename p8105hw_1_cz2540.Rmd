@@ -4,13 +4,12 @@ author: "Connie Zhang"
 date: "09/20/2019"
 output: github_document
 ---
+
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE)
 ```
 
-**Problem 1**
-
-```{r part 1} 
+```{r problem1 chunk1} 
 library (tidyverse)
 
 hw_df = tibble(
@@ -32,6 +31,7 @@ eval = FALSE
 as.numeric(pull(hw_df, norm_samp_logic))
 as.numeric(pull(hw_df, vec_char))
 as.numeric(pull(hw_df, vec_factor))
+##characters cannot be converted into numeric - resulting in the "NA" conversion and subsequently unable to take the mean. Logical and factor variables were converted into numeric successfully. Logical variable converted (true" to 1, "false" to 0) Different factor levels were converted to numbers and the mean was able to be taken (blue became 1, yellow became 3, red became 2),
 ```
 
 ```{r}
