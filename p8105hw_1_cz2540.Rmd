@@ -13,25 +13,35 @@ knitr::opts_chunk$set(echo = TRUE)
 library (tidyverse)
 
 hw_df = tibble(
-  norm_samp = rnorm(8),
-  norm_samp_logic = norm_samp > 8,
-  vec_char = c("a", "b", "c", "d","e","f","g", "h"),
-  vec_factor = factor(c("blue", "blue","blue", "yellow", "yellow", "red","red", "red"))
+norm_samp = rnorm(8),
+norm_samp_logic = norm_samp > 8,
+vec_char = c("a", "b", "c", "d","e","f","g", "h"),
+vec_factor = factor(c("blue", "blue","blue", "yellow", "yellow", "red","red", "red"))
 )
 
-##taking mean of each variable in dataframe#
+##Taking mean of each variable in dataframe#
 mean(pull(hw_df, norm_samp))
 mean(pull(hw_df, norm_samp_logic))
 mean(pull(hw_df, vec_char))
 mean(pull(hw_df, vec_factor))
 
-##cannot take mean for vec_char and vec_factor, only for norm_samp and vec_logical#
+##Could not take the mean for vec_char and vec_factor, only for norm_samp and norm_samp_logic#
+```
+
+```{r problem1 chunk2}
 eval = FALSE
 
 as.numeric(pull(hw_df, norm_samp_logic))
 as.numeric(pull(hw_df, vec_char))
 as.numeric(pull(hw_df, vec_factor))
-##characters cannot be converted into numeric - resulting in the "NA" conversion and subsequently unable to take the mean. Logical and factor variables were converted into numeric successfully. Logical variable converted (true" to 1, "false" to 0) Different factor levels were converted to numbers and the mean was able to be taken (blue became 1, yellow became 3, red became 2),
+
+##Logical and factor variables were converted into numeric successfully. Character cannot be converted into numeric, therefore unable to take the mean. Logical variable converted (true" to 1, "false" to 0) Different factor levels were converted to numbers and the mean was able to be taken (blue became 1, yellow became 3, red became 2)
 ```
 
-```{r}
+```{r problem1 chunk3}
+eval = TRUE
+
+as.numeric(pull(hw_df, norm_samp_logic))*(pull(hw_df, norm_samp))
+as.factor(pull(hw_df, norm_samp_logic))*(pull(hw_df, norm_samp))
+as.numeric(as.factor(pull(hw_df, norm_samp_logic))*(pull(hw_df, norm_samp)))
+```
