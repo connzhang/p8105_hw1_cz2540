@@ -1,26 +1,32 @@
 ---
-title: "Homework 1 - cz2540"
+title: "P8105 Homework 1"
 output: html_document
 ---
+
+#### Connie Zhang - cz2540
 
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE)
 library(tidyverse)
 ```
 
-Problem 1
+**Problem 1**
+
+Dataframe comprised of:
+
++ a random sample of size 8 from a standard Normal distribution
++ a logical vector indicating whether elements of the sample are greater than 0
++ a character vector of length 8
++ a factor vector of length 8, with 3 different factor “levels”
 
 ```{r part 1} 
-tibble(
-  vec_numeric = rnorm(8),
-  vec_logical = c (TRUE, FALSE, FALSE, FALSE, FALSE, TRUE, TRUE, TRUE),
+la_df = tibble(
+  norm_samp = rnorm(8),
+  norm_samp_logic = norm_samp > 8,
   vec_char = c("a", "b", "c", "d","e","f","g", "h"),
   vec_factor = factor(c("blue", "blue","blue", "yellow", "yellow", "red","red", "red"))
 )
-
-
+mean (pull(la_df, norm_samp))
 ```
-
-Problem 2 
 
 ```{r}
