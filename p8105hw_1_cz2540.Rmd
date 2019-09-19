@@ -1,17 +1,26 @@
 ---
-title: "p8105_hw_1_cz2540"
+title: "Homework 1 - cz2540"
 output: html_document
 ---
 
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE)
+library(tidyverse)
 ```
 
-## R Markdown file ##
+Problem 1
 
-#Problem 1#
+```{r part 1} 
+tibble(
+  vec_numeric = rnorm(8),
+  vec_logical = c (TRUE, FALSE, FALSE, FALSE, FALSE, TRUE, TRUE, TRUE),
+  vec_char = c("a", "b", "c", "d","e","f","g", "h"),
+  vec_factor = factor(c("blue", "blue","blue", "yellow", "yellow", "red","red", "red"))
+)
 
+
+```
+
+Problem 2 
 
 ```{r}
-rnorm (8, mean =0, sd = 1)
-
