@@ -14,7 +14,7 @@ library (tidyverse)
 
 hw_df = tibble(
 norm_samp = rnorm(8),
-norm_samp_logic = norm_samp > 8,
+norm_samp_logic = norm_samp >0,
 vec_char = c("a", "b", "c", "d","e","f","g", "h"),
 vec_factor = factor(c("blue", "blue","blue", "yellow", "yellow", "red","red", "red"))
 )
@@ -43,5 +43,5 @@ eval = TRUE
 
 as.numeric(pull(hw_df, norm_samp_logic))*(pull(hw_df, norm_samp))
 as.factor(pull(hw_df, norm_samp_logic))*(pull(hw_df, norm_samp))
-as.numeric(as.factor(pull(hw_df, norm_samp_logic))*(pull(hw_df, norm_samp)))
+as.numeric(as.factor(pull(hw_df, norm_samp_logic)))*(pull(hw_df, norm_samp))
 ```
