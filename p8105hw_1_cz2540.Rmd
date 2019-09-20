@@ -7,10 +7,12 @@ output: github_document
 
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE)
+
+library (tidyverse)
 ```
 
+## Problem 1
 ```{r problem1 chunk1} 
-library (tidyverse)
 ##creating dataframe and taking mean of each variable in the dataframe#
 
 hw_df = tibble(
@@ -25,19 +27,20 @@ mean(pull(hw_df, norm_samp_logic))
 mean(pull(hw_df, vec_char))
 mean(pull(hw_df, vec_factor))
 
-##Could not take the mean for vec_char and vec_factor, only for norm_samp and norm_samp_logic#
 ```
+* Could not take the mean for vec_char and vec_factor, only for norm_samp and norm_samp_logic. Showing up as "NA"
 
+### Problem 1: Applying as.numeric
 ```{r problem1 chunk2}
 eval = FALSE
 
 as.numeric(pull(hw_df, norm_samp_logic))
 as.numeric(pull(hw_df, vec_char))
 as.numeric(pull(hw_df, vec_factor))
-
-##Logical and factor variables were converted into numeric successfully. Character cannot be converted into numeric, therefore unable to take the mean. Logical variable converted (true" to 1, "false" to 0). different factor levels were converted to numbers and the mean was able to be taken (blue became 1, yellow became 3, red became 2)
 ```
+* Logical and factor variables were converted into numeric successfully. Character cannot be converted into numeric, therefore unable to take the mean. Logical variable converted (true" to 1, "false" to 0). different factor levels were converted to numbers and the mean was able to be taken (blue became 1, yellow became 3, red became 2).
 
+### Problem 1: converting logical vector
 ```{r problem1 chunk3}
 eval = TRUE
 ##converting the logical vector to numeric, and multiply the random sample by the result, converting the logical vector to a factor, and multiply the random sample by the result, and convert the logical vector to a factor and then convert the result to numeric, and multiply the random sample by the result ##
@@ -47,6 +50,8 @@ as.factor(pull(hw_df, norm_samp_logic))*(pull(hw_df, norm_samp))
 as.numeric(as.factor(pull(hw_df, norm_samp_logic)))*(pull(hw_df, norm_samp))
 ```
 
+
+### Problem 2
 ```{r problem 2}
 ##creating a second data frame named (df2)# 
 
@@ -60,10 +65,11 @@ plot_df2 = tibble(
   vec_factor2 = as.factor(vec_logic2)
 )
 ```
-* the size of the dataset is `r nrow(plot_df2)` rows and `r ncol(plot_df2)` columns.
-* the mean of the sample is `r mean(pull(plot_df2, x))`, the median of the sample is `r median(pull(plot_df2, x))`, the standard deviation is `r sd(pull(plot_df2, x))`
-* the proportion of cases for which x + y > 1 is `r mean(pull(plot_df2, vec_logic2))`
+* The size of the dataset is `r nrow(plot_df2)` rows and `r ncol(plot_df2)` columns.
+* The mean of the sample is `r mean(pull(plot_df2, x))`, the median of the sample is `r median(pull(plot_df2, x))`, the standard deviation is `r sd(pull(plot_df2, x))`
+* The proportion of cases for which x + y > 1 is `r mean(pull(plot_df2, vec_logic2))`
 
+## Problem 2: Scatterplots
 ```{r problem2 scatterplot}
 ##create a scatterplot of y vs. x, color points using logic, numeric, and factor variables#
 
