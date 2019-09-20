@@ -9,6 +9,7 @@ output: github_document
 knitr::opts_chunk$set(echo = TRUE)
 
 library (tidyverse)
+eval = FALSE
 ```
 
 ## Problem 1
@@ -32,7 +33,6 @@ mean(pull(hw_df, vec_factor))
 
 ### Problem 1: Applying as.numeric
 ```{r problem1 chunk2}
-eval = FALSE
 
 as.numeric(pull(hw_df, norm_samp_logic))
 as.numeric(pull(hw_df, vec_char))
@@ -42,7 +42,6 @@ as.numeric(pull(hw_df, vec_factor))
 
 ### Problem 1: converting logical vector
 ```{r problem1 chunk3}
-eval = TRUE
 ##converting the logical vector to numeric, and multiply the random sample by the result, converting the logical vector to a factor, and multiply the random sample by the result, and convert the logical vector to a factor and then convert the result to numeric, and multiply the random sample by the result ##
 
 as.numeric(pull(hw_df, norm_samp_logic))*(pull(hw_df, norm_samp))
@@ -79,4 +78,4 @@ ggplot(plot_df2, aes(y = y, x = x, color = vec_numeric2)) + geom_point()
 ggplot(plot_df2, aes(y = y, x = x, color = vec_factor2)) + geom_point()
 ```
 
-* The logic and factor scatterplots consist of two colors that represent the binary values of true, in blue, and false, in red. The numeric scatterplot is different in that the color scale is a gradient ranging from a darker to lighter blue. This represents the continuous scalae from 0.00 to 1.00 as seen in the output's legend. 
+* The logic and factor scatterplots consist of two colors that represent the binary values of true, in blue, and false, in red. The factor scatterplot has the same color scales as the logic plot because the factor vector was created by coercing the logic  vector. The numeric scatterplot has a different color scale, coloring a numeric variable representing the values 0 or 1. This explains why there are only two colors plotted on the numeric scatterplot, despite the key showing a gradient of colors.  
