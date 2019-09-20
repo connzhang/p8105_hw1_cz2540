@@ -11,7 +11,7 @@ knitr::opts_chunk$set(echo = TRUE)
 
 ```{r problem1 chunk1} 
 library (tidyverse)
-##creating a data frame#
+##creating dataframe and taking mean of each variable in the dataframe#
 
 hw_df = tibble(
 norm_samp = rnorm(8),
@@ -20,13 +20,12 @@ vec_char = c("a", "b", "c", "d","e","f","g", "h"),
 vec_factor = factor(c("blue", "blue","blue", "yellow", "yellow", "red","red", "red"))
 )
 
-##taking mean of each variable in dataframe#
 mean(pull(hw_df, norm_samp))
 mean(pull(hw_df, norm_samp_logic))
 mean(pull(hw_df, vec_char))
 mean(pull(hw_df, vec_factor))
 
-##could not take the mean for vec_char and vec_factor, only for norm_samp and norm_samp_logic#
+##Could not take the mean for vec_char and vec_factor, only for norm_samp and norm_samp_logic#
 ```
 
 ```{r problem1 chunk2}
@@ -36,13 +35,12 @@ as.numeric(pull(hw_df, norm_samp_logic))
 as.numeric(pull(hw_df, vec_char))
 as.numeric(pull(hw_df, vec_factor))
 
-##logical and factor variables were converted into numeric successfully. character cannot be converted into numeric, therefore unable to take the mean. logical variable converted (true" to 1, "false" to 0). different factor levels were converted to numbers and the mean was able to be taken (blue became 1, yellow became 3, red became 2)
+##Logical and factor variables were converted into numeric successfully. Character cannot be converted into numeric, therefore unable to take the mean. Logical variable converted (true" to 1, "false" to 0). different factor levels were converted to numbers and the mean was able to be taken (blue became 1, yellow became 3, red became 2)
 ```
 
 ```{r problem1 chunk3}
 eval = TRUE
-
-##convert the logical vector to numeric, and multiply the random sample by the result, converting the logical vector to a factor, and multiply the random sample by the result, and convert the logical vector to a factor and then convert the result to numeric, and multiply the random sample by the result ##
+##converting the logical vector to numeric, and multiply the random sample by the result, converting the logical vector to a factor, and multiply the random sample by the result, and convert the logical vector to a factor and then convert the result to numeric, and multiply the random sample by the result ##
 
 as.numeric(pull(hw_df, norm_samp_logic))*(pull(hw_df, norm_samp))
 as.factor(pull(hw_df, norm_samp_logic))*(pull(hw_df, norm_samp))
@@ -73,3 +71,5 @@ ggplot(plot_df2, aes(y = y, x = x, color = vec_logic2)) + geom_point()
 ggplot(plot_df2, aes(y = y, x = x, color = vec_numeric2)) + geom_point()
 ggplot(plot_df2, aes(y = y, x = x, color = vec_factor2)) + geom_point()
 ```
+
+* The logic and factor scatterplots consist of two colors that represent the binary values of true, in blue, and false, in red. The numeric scatterplot is different in that the color scale is a gradient ranging from a darker to lighter blue. This represents the continuous scalae from 0.00 to 1.00 as seen in the output's legend. 
