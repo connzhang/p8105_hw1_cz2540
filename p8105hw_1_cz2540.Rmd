@@ -74,6 +74,7 @@ plot_df2 = tibble(
 ##create a scatterplot of y vs. x, color points using logic, numeric, and factor variables#
 
 ggplot(plot_df2, aes(y = y, x = x, color = vec_logic2)) + geom_point()
+ggsave("plot_df2.png")
 ggplot(plot_df2, aes(y = y, x = x, color = vec_numeric2)) + geom_point()
 ggplot(plot_df2, aes(y = y, x = x, color = vec_factor2)) + geom_point()
 ```
